@@ -7,11 +7,15 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])){
 <html>
     <head>
         <title>HOME</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="CSS/style.css">
     </head>
     <body>
-        <h1>Hello, <?php echo $_SESSION['username']; ?></h1>
-        <a href="logout.php">Logout</a>
+    <div class="main-component">
+            <div class="second-component">
+                <h1 class="hello-header">Hello, <?php echo $_SESSION['username']; ?></h1>
+                <a class="redirect" href="logout.php">Logout</a>   
+            </div>
+        </div>
     </body>
 </html>
 <?php
