@@ -1,11 +1,15 @@
 <?php
 session_start();
-
+include "../db_conn.php";
+$user = $_SESSION['username'];
+$qry = "SELECT * FROM programari WHERE pacient = '$user'";
+$result = mysqli_query($conn, $qry);
 if (isset($_SESSION['username'])) {
     ?>
     <!DOCTYPE html>
     <html>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
     <head>
         <style>
             .topnav {
@@ -17,6 +21,7 @@ if (isset($_SESSION['username'])) {
                 margin-left: 22.5%;
                 font-family: Raleway;
                 font-weight: 800;
+
             }
 
             .topnav a {
@@ -56,7 +61,10 @@ if (isset($_SESSION['username'])) {
                 margin-left: -21%;
             }
 
-            h2,h3,h4,h5 {
+            h2,
+            h3,
+            h4,
+            h5 {
                 margin-left: -21%;
             }
 
@@ -70,7 +78,7 @@ if (isset($_SESSION['username'])) {
                 color: white;
                 margin-bottom: 2%;
                 margin-top: 5%;
-            
+
             }
 
             a:link {
@@ -96,44 +104,88 @@ if (isset($_SESSION['username'])) {
             .redirect {
                 padding-bottom: 15px;
             }
-            .personal-information{
+
+            .personal-information {
                 width: 60%;
                 height: 25%;
-                margin-left: -3%;
+                margin-left: -21%;
                 display: flex;
-                justify-content: space-around;
+                gap: 5%;
             }
-            .buttons{
+
+            .buttons {
                 width: 45%;
                 text-align: center;
                 border-radius: 6px;
-                background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+                background-color: #8a93ff;
                 font-size: 1.3rem;
             }
+
+            .row {
+                text-align: left;
+                display: block;
+            }
+
+            table {
+                font-family: Raleway;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td,
+            th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
         </style>
-        <title>HOME</title>
+        <title>Vizualizare programari</title>
         <link rel="stylesheet" href="../CSS/style.css">
     </head>
 
     <body>
         <div class="topnav">
-            <a href="../home.php">Informatii personale</a>
+            <a href="editPersonalData.php">Informatii personale</a>
             <a href="programare.php">Creeaza programare</a>
             <a href="seeProgramare.php">Vizualizare programari</a>
             <a href="stergereProgramare.php">Anuleaza programare</a>
         </div>
         <div class="main-component-2">
             <div class="second-component">
-                <h1 class="hello-header">Informatii personale </h1>
+                <h1 class="hello-header">Vizualizare programari</h1>
                 <div class="personal-information">
-                    <div class="buttons"><a class="redirect" href="seeUserInformation.php">Vizualizare</a>
-                    </div>
-                    <div class="buttons"><a class="redirect" href="editUserInformation.php">Editare</a>
-                    </div>    
-                
+                    <?php
+                    if (mysqli_num_rows($result) > 0) {
+                        echo '<table>';
+                        echo '  <tr>';
+                        echo '    <th>Doctor</th>';
+                        echo '    <th>Sectia</th>';
+                        echo '    <th>Data</th>';
+                        echo '    <th>Pret</th>';
+                        echo '  </tr>';
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo '<tr>';
+                            echo '<td>' . $row['doctor'] . '</td>';
+                            echo '<td>' . $row['serviciu'] . '</td>';
+                            echo '<td>' . $row['data'] . '</td>';
+                            echo '<td>' . $row['pret'] . '</td>';
+                            echo '</tr>';
+                        }
+                        echo '</table>';
+                    } else
+                        echo '<p>Ne pare rau, momentan nu ati efectuat nicio programare !</p>';
+
+                    ?>
+                    </table>
+
+                </div>
+                <div class="logout-container"><a class="redirect" href="../home.php">Home</a> </div>
             </div>
-            <div class="logout-container"><a class="redirect" href="../home.php">Home</a> </div>
-        </div>
 
     </body>
 

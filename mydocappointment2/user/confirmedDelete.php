@@ -5,7 +5,7 @@ if (isset($_SESSION['username'])) {
     ?>
     <!DOCTYPE html>
     <html>
-
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <head>
         <style>
             .topnav {
@@ -15,7 +15,8 @@ if (isset($_SESSION['username'])) {
                 border-radius: 9px;
                 width: 60%;
                 margin-left: 22.5%;
-
+                font-family: Raleway;
+                font-weight: 800;
             }
 
             .topnav a {
@@ -53,6 +54,7 @@ if (isset($_SESSION['username'])) {
             .hello-header {
                 padding-top: 4%;
                 margin-left: -21%;
+                font-family: Raleway;
             }
 
             h2,h3,h4,h5 {
@@ -62,12 +64,12 @@ if (isset($_SESSION['username'])) {
             .logout-container {
                 width: 20%;
                 height: 10%;
-                background-image: linear-gradient(to right, #EC255A 0%, #E0144C 51%, #9A1663 100%);
+                background-color: red;
                 margin-left: 13%;
                 text-align: center;
                 border-radius: 6px;
                 color: white;
-                margin-bottom: 2%;
+                margin-top: 5%;
             }
 
             a:link {
@@ -93,25 +95,38 @@ if (isset($_SESSION['username'])) {
             .redirect {
                 padding-bottom: 15px;
             }
+            .personal-information{
+                width: 60%;
+                height: 25%;
+                margin-left: -3%;
+                display: flex;
+                justify-content: space-around;
+            }
+            .buttons{
+                width: 45%;
+                text-align: center;
+                border-radius: 6px;
+                background-color: #8a93ff;
+                font-size: 1.3rem;
+            }
         </style>
         <title>HOME</title>
-        <link rel="stylesheet" href="CSS/style.css">
+        <link rel="stylesheet" href="../CSS/style.css">
     </head>
 
     <body>
         <div class="topnav">
-            <a href="user/editPersonalData.php">Informatii personale</a>
-            <a href="user/programare.php">Creeaza programare</a>
-            <a href="user/seeProgramare.php">Vizualizare programari</a>
-            <a href="user/stergereProgramare.php">Anuleaza programare</a>
+            <a href="editPersonalData.php">Informatii personale</a>
+            <a href="programare.php">Creeaza programare</a>
+            <a href="seeProgramare.php">Vizualizare programari</a>
+            <a href="stergereProgramare.php">Anuleaza programare</a>
         </div>
         <div class="main-component-2">
             <div class="second-component">
-                <h1 class="hello-header">Hello, <?php echo $_SESSION['username']; ?></h1>
-                <h2>Your current role is <?php echo $_SESSION['role']; ?></h2>
-                <h5>What do you want to do today?</h5>
-                <div class="logout-container"><a class="redirect" href="logout.php">Logout</a> </div>
+                <h1 class="hello-header">Programarea dumneavoastra a fost anulata ! </h1>
+                <div class="logout-container"><a class="redirect" href="seeProgramare.php">Back</a> </div>
             </div>
+            
         </div>
 
     </body>

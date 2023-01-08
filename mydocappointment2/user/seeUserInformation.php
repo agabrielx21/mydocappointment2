@@ -9,7 +9,7 @@ if (isset($_SESSION['username'])) {
     ?>
     <!DOCTYPE html>
     <html>
-
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <head>
         <style>
             .topnav {
@@ -19,6 +19,8 @@ if (isset($_SESSION['username'])) {
                 border-radius: 9px;
                 width: 60%;
                 margin-left: 22.5%;
+                font-family: Raleway;
+                font-weight: 800;
 
             }
 
@@ -66,7 +68,7 @@ if (isset($_SESSION['username'])) {
             .logout-container {
                 width: 20%;
                 height: 10%;
-                background-color: red;
+                background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
                 margin-left: 13%;
                 text-align: center;
                 border-radius: 6px;
@@ -124,10 +126,10 @@ if (isset($_SESSION['username'])) {
 
     <body>
         <div class="topnav">
-            <a href="">Informatii personale</a>
-            <a href="">Creeaza programare</a>
-            <a href="">Modifica programare</a>
-            <a href="">Anuleaza programare</a>
+            <a href="editPersonalData.php">Informatii personale</a>
+            <a href="programare.php">Creeaza programare</a>
+            <a href="">Vizualizare programari</a>
+            <a href="stergereProgramare.php">Anuleaza programare</a>
         </div>
         <div class="main-component-2">
             <div class="second-component">

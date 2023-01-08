@@ -10,7 +10,7 @@ if (isset($_SESSION['username'])) {
     ?>
     <!DOCTYPE html>
     <html>
-
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <head>
         <style>
             .topnav {
@@ -20,7 +20,8 @@ if (isset($_SESSION['username'])) {
                 border-radius: 9px;
                 width: 60%;
                 margin-left: 22.5%;
-
+                font-family: Raleway;
+                font-weight: 800;
             }
 
             .topnav a {
@@ -67,7 +68,7 @@ if (isset($_SESSION['username'])) {
             .logout-container {
                 width: 20%;
                 height: 10%;
-                background-color: red;
+                background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
                 margin-left: 13%;
                 text-align: center;
                 border-radius: 6px;
@@ -75,6 +76,27 @@ if (isset($_SESSION['username'])) {
                 margin-bottom: 2%;
                 margin-top: 5%;
             
+            }
+
+            .submit-container{
+                background-image: linear-gradient(to right, #82CD47 0%, #54B435 51%, #379237 100%);
+                width: 20%;
+                margin-left: 80.5%;
+                text-align: center;
+                border-radius: 6px;
+                color: white;
+                margin-bottom: 2%;
+                margin-top: 5%;
+            }
+            #s-input{
+                width: 100%;
+                background-image: inherit;
+                cursor: pointer;
+                border-radius: 6px;
+                border: none;
+                padding-bottom: 5px;
+                font-family: 'Bree Serif', serif;
+                font-size: 16px;
             }
 
             a:link {
@@ -134,9 +156,9 @@ if (isset($_SESSION['username'])) {
     <body>
         <div class="topnav">
             <a href="editPersonalData.php">Informatii personale</a>
-            <a href="">Creeaza programare</a>
-            <a href="">Modifica programare</a>
-            <a href="">Anuleaza programare</a>
+            <a href="programare.php">Creeaza programare</a>
+            <a href="seeProgramare.php">Vizualizare programari</a>
+            <a href="stergereProgramare.php">Anuleaza programare</a>
         </div>
         <div class="main-component-2">
             <div class="second-component">
@@ -181,7 +203,7 @@ if (isset($_SESSION['username'])) {
                         <input type="text" name="nr_ct" placeholder="<?php  echo $row['nr_ct']?>">
                         </div>
                     </div>
-                    <div class="container"><input type="submit" value="Submit"></div>
+                    <div class="submit-container"><input type="submit" value="Submit" id="s-input"></div>
                 </form>  
                 
             </div>
